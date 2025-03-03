@@ -1,0 +1,42 @@
+Cách 1: Dùng thuật toán bubble sort
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int [] a = new int[n];
+        for(int i = 0; i < n; i++){
+            a[i] = scanner.nextInt();
+        }
+        for(int i = 0; i < n; i++){
+            for(int j = i + 1; j < n; j++){
+                if(a[i] > a[j]){
+                    int temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+        for(int i = 0; i < n; i++){
+            System.out.print(a[i] + " ");
+        }
+    }
+}
+
+Cách 2: Dùng hàm sort
+import java.util.Arrays;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args){
+	Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int [] a = new int[n];
+	for(int i = 0; i < n; i++){
+            a[i] = scanner.nextInt();
+        }
+        Arrays.sort(a);
+        for(int i = 0; i < n; i++){
+            System.out.print(a[i] + " ");
+        }
+    }
+}
