@@ -1,0 +1,68 @@
+package okok;
+import javax.swing.JOptionPane;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Arrays;
+public class svbinh {
+	public static void main(String[] args){
+		Scanner scanner = new Scanner(System.in);
+		int n = scanner.nextInt();
+		int a[][] = new int[n + 2][n + 2];
+	//	int b[][] = new int[n + 2][n + 2];
+		while(n < 3 || n > 8) {
+			System.out.println("So khong hop le\nYeu cau nhap lai");
+			n = scanner.nextInt();
+		}
+		for(int i = 0; i <= n + 1; i ++) {
+			a[0][i] = a[n + 1][i] = a[i][n + 1] = a[i][0] = 1;
+		}
+		int temp = 1;
+		int i = 1;
+		int j = 1;
+		int stat = 0;
+		while(a[i][j] == 0) {
+			a[i][j] = temp;
+			temp += 1;
+			if(stat == 0) {
+				if(a[i][j + 1] != 0) {
+					
+					stat = 1;
+					i ++;
+				}
+				else
+					j ++;
+			}
+			else if(stat == 1) {
+				if(a[i + 1][j] != 0) {
+					stat = 2;
+					j --;
+				}
+				else
+					i ++;
+			}
+			else if(stat == 2) {
+				if(a[i][j - 1] != 0) {
+					stat = 3;
+					i --;
+				}
+				else
+					j --;
+			}
+			else {
+				if(a[i - 1][j] != 0) {
+					stat = 0;
+					j ++;
+				}
+				else
+					i --;
+			}
+		}
+		for(int u = 1; u <= n; u ++) {
+			for(int v = 1; v <= n; v ++) {
+				System.out.printf("%-4d", a[u][v]);
+			}
+			System.out.print("\n");
+		}
+		return;
+	}
+}
